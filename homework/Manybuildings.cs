@@ -8,11 +8,11 @@ namespace homework
 {
     class Manybuildings
     {
-        private int[] list=new int[10];
-        public int this[int index] { get { return this.list[index]; } set { this.list[index] = value; } }
+        private Manybuildings[] list;
+        public Manybuildings this[int index] { get { return this.list[index]; } set { this.list[index] = value; } }
         public Manybuildings()
         {
-            this.list = new int[10];
+            this.list = new Manybuildings[10];
         }
     }
 }

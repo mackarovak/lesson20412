@@ -8,11 +8,11 @@ namespace homework
 {
     class Building
     {
-        private int Height;
-        private int Numberoffloors;
-        private int Numberofapartments;
-        private int Numberofentrances;
-        private readonly int uniqnumber;
+        private int Height { get; set; }
+        private int Numberoffloors { get; set; }
+        private int Numberofapartments { get; set; }
+        private int Numberofentrances { get; set; }
+        private int uniqnumber { get; set; }
         private static int UniqueNumber = 0;
         public Building()
         {
@@ -47,12 +47,6 @@ namespace homework
 
             Numberofapartmentsintheentrance = value* Height;
 }
-        }
-        private Manybuildings Manybuildings;
-        public Manybuildings this[int index]
-        {
-            get { return Manybuildings[index]; }
-            set { Manybuildings[index] = value; }
         }
     }
 }
