@@ -14,7 +14,7 @@ namespace homework
 			Current,
 			Savings
 		}
-		private int index;
+		public int index;
 		private Type accountType;
 		private double balance;
 		private Queue<BankTransaction> transactions;
@@ -28,27 +28,27 @@ namespace homework
 			set { BankTransaction[index] = value; }
         }
 		static int index1 = 0;
-		internal Account()
+		public Account()
 		{
 			index = index1++;
 			transactions = new Queue<BankTransaction>();
 		}
 
-		internal Account(double balance)
+		public Account(double balance)
 		{
 			index = index1++;
 			this.balance = balance;
 			transactions = new Queue<BankTransaction>();
 		}
 
-		internal Account(Type accountType)
+		public Account(Type accountType)
 		{
 			index = index1++;
 			this.accountType = accountType;
 			transactions = new Queue<BankTransaction>();
 		}
 
-		internal Account(Type accountType, double balance) : this(accountType)
+		public Account(Type accountType, double balance) : this(accountType)
 		{
 			this.balance = balance;
 		}

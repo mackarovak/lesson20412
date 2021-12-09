@@ -8,7 +8,7 @@ namespace homework
 {
     abstract class Indexcreation
     {
-        protected int index;
+        public int index;
         public int Index { get { return index; } }
     }
 }
