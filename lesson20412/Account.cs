@@ -14,7 +14,6 @@ namespace homework
 			Current,
 			Savings
 		}
-		public int index;
 		private Type accountType;
 		private double balance;
 		private Queue<BankTransaction> transactions;
@@ -27,23 +26,22 @@ namespace homework
 			get { return BankTransaction[index]; }
 			set { BankTransaction[index] = value; }
         }
-		static int index1 = 0;
 		public Account()
 		{
-			index = index1++;
+			index = index++;
 			transactions = new Queue<BankTransaction>();
 		}
 
 		public Account(double balance)
 		{
-			index = index1++;
+			index = index++;
 			this.balance = balance;
 			transactions = new Queue<BankTransaction>();
 		}
 
 		public Account(Type accountType)
 		{
-			index = index1++;
+			index = index++;
 			this.accountType = accountType;
 			transactions = new Queue<BankTransaction>();
 		}
