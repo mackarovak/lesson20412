@@ -8,45 +8,105 @@ namespace homework
 {
     class Building
     {
-        private int Height { get; set; }
-        private int Numberoffloors { get; set; }
-        private int Numberofapartments { get; set; }
-        private int Numberofentrances { get; set; }
-        private int uniqnumber { get; set; }
+        private int Height;
+        private int Numberoffloors;
+        private int Numberofapartments;
+        private int Numberofentrances;
+        private int uniqnumber;
+        static int indexer = 0;
         private static int UniqueNumber = 0;
+        private int index;
         public Building()
         {
-            UniqueNumber += 1;
-            uniqnumber = UniqueNumber;
+            index = indexer++;
         }
-        public int Floorheight { get { return Height / Numberoffloors; } set {
-                if (value < 0)
+        public Building(int Height, int Numberoffloors, int Numberofapartments, int Numberofentrances)
+        {
+            index = indexer++;
+            this.Height = Height;
+            this.Numberoffloors = Numberoffloors;
+            this.Numberofapartments = Numberofapartments;
+            this.Numberofentrances = Numberofentrances;
+        }
+        public int Floorheight
+        {
+            get { return Height; }
+            set
+            {
+                if (Height < 0)
                     throw new ArgumentOutOfRangeException(
                           $"{nameof(value)} must be higher 0 ");
+                else
+                {
+                    Height = value;
+                }
 
-                Height = value * Numberoffloors;
-            } }
+            }
+        }
 
         public int Numberofapartmentsintheentrance
-        { get { return Numberofapartments / Numberofentrances; } set {
+        {
+            get { return Numberofentrances; }
+            set
+            {
                 if (value < 0)
                     throw new ArgumentOutOfRangeException(
                           $"{nameof(value)} must be more 0 ");
 
-                Numberofapartments = value * Numberofentrances;
+                else
+                { Numberofentrances = value; }
             }
         }
 
         public int Numberofapartmentsperfloor
         {
-            get { return Numberofapartmentsintheentrance / Height; }
-            set {
-                if (value< 0)
+            get { return Numberoffloors; }
+            set
+            {
+                if (value < 0)
                     throw new ArgumentOutOfRangeException(
                           $"{nameof(value)} must be more 0 ");
 
-            Numberofapartmentsintheentrance = value* Height;
-}
+                else
+                {
+                    Numberoffloors = value;
+                }
+            }
+        }
+        public int Numberof
+        {
+            get { return Numberofapartments; }
+            set
+            {
+                if (value < 0)
+                    throw new ArgumentOutOfRangeException(
+                          $"{nameof(value)} must be more 0 ");
+
+                else
+                {
+                    Numberofapartments = value;
+                }
+
+            }
+        }
+        public double GetHighOfStorey(int NumberOfEntances)
+        {
+            if (NumberOfEntances <= Numberofentrances && Numberofentrances > 0)
+            {
+                return Height / NumberOfEntances * NumberOfEntances;
+            }
+            else
+            {
+                throw new ArgumentOutOfRangeException("Такогo этажа нет");
+            }
+        }
+        public int GetApartNumberOfentrances()
+        {
+            return Numberofapartments / Numberofentrances;
+        }
+        public int GetApartNumberOfStorey()
+        {
+            return GetApartNumberOfentrances() / Numberofentrances;
         }
     }
 }

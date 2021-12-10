@@ -16,10 +16,15 @@ namespace homework
 		}
 		private Type accountType;
 		private double balance;
+		private int index;
+		static int indexer = 0;
+		private string cardHolder;
 		private Queue<BankTransaction> transactions;
 		public double Balans { get { return Balans; } }
 		public AccountType Type { get { return Type; } }
-		public string CardHolder{ get; set; }
+		public string CardHolder{ get=> cardHolder; set => cardHolder=value; }
+		public int Index { get => index; }
+		static private int transIndex = 0;
 		private BankTransaction[] BankTransaction;
 		public BankTransaction this[int index]
         {
@@ -28,22 +33,25 @@ namespace homework
         }
 		public Account()
 		{
-			index = index++;
+			index = indexer++;
 			transactions = new Queue<BankTransaction>();
+			BankTransaction = new BankTransaction[10];
 		}
 
 		public Account(double balance)
 		{
-			index = index++;
+			index = indexer++;
 			this.balance = balance;
 			transactions = new Queue<BankTransaction>();
+			BankTransaction = new BankTransaction[10];
 		}
 
 		public Account(Type accountType)
 		{
-			index = index++;
+			index = indexer++;
 			this.accountType = accountType;
 			transactions = new Queue<BankTransaction>();
+			BankTransaction = new BankTransaction[10];
 		}
 
 		public Account(Type accountType, double balance) : this(accountType)
@@ -95,6 +103,25 @@ namespace homework
 			sw.Write(string.Join("\n", transactions));
 			sw.Close();
 			GC.SuppressFinalize(sw);
+		}
+		public override bool Equals(object obj)
+		{
+			if (obj is Account)
+			{
+				return this == (obj as Account);
+			}
+			else
+			{
+				return false;
+			}
+		}
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
+        }
+		public override string ToString()
+		{
+			return $"{Index}. Тип: {accountType}, баланс: {Balans}";
 		}
 	}
 }

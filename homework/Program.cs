@@ -11,9 +11,9 @@ namespace homework
         static void Main(string[] args)
         {
             Console.WriteLine("Домашнее задание 13.1");
-            Building building1 = new Building();
-            building1.Floorheight = 5;
-            Console.WriteLine(building1.Floorheight);
+            Manybuildings buildings = new Manybuildings();
+            buildings[1] = new Manybuildings();
+
         }
     }
 }

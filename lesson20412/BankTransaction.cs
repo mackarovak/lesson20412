@@ -14,13 +14,18 @@ namespace homework
             Replenishment,
             Transfer
         }
-        public readonly DateTime dateTime = new DateTime();
-        public double summa { get;}
+        private DateTime dateTime;
+        private TimeSpan time;
+        private double summa;
+        public DateTime DateTime { get { return dateTime; } }
+        public double Summa { get { return summa; } }
+        public TimeSpan Time { get => time; }
         public TypeTransaction typeTransaction { get; }
         public BankTransaction(double summa)
         {
             this.summa = summa;
-            dateTime = DateTime.Now;
+            dateTime = DateTime.Now.Date;
+            time = DateTime.Now.TimeOfDay;
         }
     }
 }
